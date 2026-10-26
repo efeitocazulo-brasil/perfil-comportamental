@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Identificação e Análise de Perfil Comportamental · EfeitoCazulo</title>
+<style>
+:root{--bg:#f6f5f1;--card:#fff;--tx:#1f2430;--mut:#667085;--bd:#e3e1d9;--pri:#3b4a8c;--E:#c8382e;--C:#d98a0b;--P:#2f8f5b;--A:#2f6fb5;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15171c;--card:#1f232b;--tx:#eceef3;--mut:#9aa3b2;--bd:#323846;--pri:#8d9bff;--E:#ff7a6e;--C:#f2b544;--P:#5ecf92;--A:#6fb0f5;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#15171c;--card:#1f232b;--tx:#eceef3;--mut:#9aa3b2;--bd:#323846;--pri:#8d9bff;--E:#ff7a6e;--C:#f2b544;--P:#5ecf92;--A:#6fb0f5;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:760px;margin:0 auto;padding:20px 16px 48px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:22px;margin-bottom:16px}
+h1{font-size:1.7rem;margin:0 0 8px}h2{font-size:1.15rem;margin:0 0 10px}
+p{margin:0 0 10px}.mut{color:var(--mut)}
+.btn{font:inherit;cursor:pointer;border-radius:12px;border:1px solid var(--bd);background:var(--card);color:var(--tx);padding:12px 18px}
+.btn.pri{background:var(--pri);color:#fff;border-color:var(--pri)}
+:root[data-theme="dark"] .btn.pri,.dk .btn.pri{color:#111}
+.opt{display:block;width:100%;text-align:left;margin-bottom:10px;padding:14px 16px}
+.opt.sel{border-color:var(--pri);background:color-mix(in srgb,var(--pri) 12%,var(--card))}
+@media(hover:hover){.opt:hover{border-color:var(--pri);background:color-mix(in srgb,var(--pri) 12%,var(--card))}}
+.bar{height:8px;background:var(--bd);border-radius:99px;overflow:hidden;margin:10px 0 18px}
+.bar i{display:block;height:100%;background:var(--pri);transition:width .25s}
+.q{font-size:1.2rem;font-weight:600;margin:6px 0 18px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:560px){.grid{grid-template-columns:1fr}}
+.pf{border-left:5px solid var(--bd);padding:10px 14px;background:color-mix(in srgb,var(--card) 100%,var(--bg));border-radius:10px;border:1px solid var(--bd)}
+.row{display:flex;align-items:center;gap:10px;margin:8px 0}.row b{width:130px;font-size:.92rem}
+.row .tr{flex:1;height:14px;background:var(--bd);border-radius:99px;overflow:hidden}.row .tr i{display:block;height:100%}
+.row span{width:44px;text-align:right;font-variant-numeric:tabular-nums}
+ul{margin:0;padding-left:20px}li{margin-bottom:6px}
+.tag{display:inline-block;padding:3px 12px;border-radius:99px;color:#fff;font-size:.85rem;font-weight:600}
+.hero{border-top:6px solid var(--c)}
+.hide{display:none!important}
+@media print{.noprint{display:none!important}body{background:#fff;color:#000}.card{break-inside:avoid;background:#fff!important;color:#000!important;border-color:#bbb!important}.mut{color:#444!important}.wrap{padding:0}}
+.cover{position:relative;overflow:hidden;color:#fff;border-radius:22px;padding:56px 28px 40px;min-height:78vh;display:flex;flex-direction:column;justify-content:center;background:radial-gradient(circle at 15% 10%,#3f6fd8 0,transparent 45%),radial-gradient(circle at 90% 90%,#7a3fc4 0,transparent 50%),linear-gradient(160deg,#0f1b3d,#1b2f6b)}
+.cover:before,.cover:after{content:"";position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,.18);pointer-events:none}
+.cover:before{width:380px;height:380px;right:-120px;top:-120px}.cover:after{width:240px;height:240px;left:-80px;bottom:-80px}
+.cover>*{position:relative;z-index:1}
+.brand{letter-spacing:.15em;font-size:clamp(1.4rem,6.2vw,2.8rem);font-weight:800;color:#f2c14e;margin-bottom:22px}
+.cover h1{font-size:clamp(1.9rem,6vw,3rem);line-height:1.12;margin:0 0 18px}
+.cover p{font-size:1.08rem;max-width:560px;color:#e3e8f7}
+.cover .quote{font-style:italic;color:#f2c14e;margin:6px 0 26px}
+.cover .btn{background:#f2c14e;color:#1a1a1a;border:0;font-weight:700;padding:14px 26px;align-self:flex-start;touch-action:manipulation;-webkit-appearance:none;appearance:none;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.dots{display:flex;gap:8px;margin:0 0 22px}.dots i{width:12px;height:12px;border-radius:50%;display:block}
+.kw{font-size:.8rem;text-transform:uppercase;letter-spacing:.12em}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:560px){.two{grid-template-columns:1fr}}
+.good{border-left:4px solid var(--P)}.bad{border-left:4px solid var(--E)}
+details{border:1px solid var(--bd);border-radius:12px;padding:10px 14px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:600}
+.lbl{display:inline-block;font-size:.78rem;padding:2px 10px;border-radius:99px;background:var(--bd);color:var(--mut);margin-bottom:6px}
+#quiz{color:#fff;border:0;border-radius:22px;padding:28px 22px;min-height:70vh;background:radial-gradient(circle at 15% 10%,#3f6fd8 0,transparent 45%),radial-gradient(circle at 90% 90%,#7a3fc4 0,transparent 50%),linear-gradient(160deg,#0f1b3d,#1b2f6b)}
+#quiz .qbrand{color:#f2c14e;font-weight:800;letter-spacing:.15em;font-size:1rem;margin-bottom:12px}
+#quiz #cnt{color:#cfd6ee}
+#quiz .bar{background:rgba(255,255,255,.18)}#quiz .bar i{background:#f2c14e}
+#quiz .lbl{background:rgba(255,255,255,.14);color:#f2c14e}
+#quiz .opt{background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.28)}
+#quiz .opt.sel{background:#f2c14e;color:#1a1a1a;border-color:#f2c14e}
+@media(hover:hover){#quiz .opt:hover{background:#f2c14e;color:#1a1a1a;border-color:#f2c14e}}
+#quiz #back{background:transparent;color:#e3e8f7;border-color:rgba(255,255,255,.35)}
+.fl{display:block;margin:10px 0;font-size:.9rem;color:var(--mut)}
+.fl input{display:block;width:100%;margin-top:4px;padding:12px;border-radius:10px;border:1px solid var(--bd);background:var(--bg);color:var(--tx);font:inherit;font-size:16px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<section id="cover" class="cover">
+<div class="brand">EFEITOCAZULO</div>
+<div class="dots"><i style="background:#ff7a6e"></i><i style="background:#f2b544"></i><i style="background:#5ecf92"></i><i style="background:#6fb0f5"></i></div>
+<h1>Identificação e Análise de Perfil Comportamental</h1>
+<p>Por que duas pessoas vivem a mesma situação e reagem de formas tão diferentes? Por que algumas coisas nos energizam enquanto outras nos esgotam?</p>
+<p class="quote">Antes de transformar a vida, é preciso conhecer quem a vive.</p>
+<p>Cada lagarta carrega dentro de si a borboleta, mas a metamorfose começa quando ela se enxerga. Descubra como você pensa, sente, decide e se relaciona, e dê o primeiro passo rumo à sua melhor versão.</p>
+<button class="btn" id="go" style="margin-top:22px">Iniciar minha jornada →</button>
+</section>
+
+<section id="intro" class="hide">
+<div class="card">
+<div class="lbl">EfeitoCazulo · Autoconhecimento</div>
+<h1>O que é perfil comportamental?</h1>
+<p>Perfil comportamental é o conjunto de tendências naturais que mostram como uma pessoa pensa, sente, toma decisões, se comunica e reage diante de desafios, pressão e relacionamentos. Funciona como uma «bússola» do seu jeito de ser, e não como uma caixa que limita quem você é.</p>
+<p>Este teste usa a base clássica dos quatro temperamentos, que descreve quatro grandes estilos de comportamento. Todos nós temos um pouco de cada um, mas costumamos ter um que se destaca, e às vezes um segundo que o complementa.</p>
+<p>Conhecer o seu perfil ajuda a entender suas facilidades e dificuldades, escolher melhor o caminho profissional, melhorar relações, lidar com o estresse e desenvolver pontos que ainda estão adormecidos.</p>
+</div>
+<div class="card">
+<h2>Os quatro perfis</h2>
+<div class="two">
+<div class="pf" style="border-left:5px solid var(--E)"><b>Executor · Colérico</b><br><span class="mut">Ação, foco e liderança</span></div>
+<div class="pf" style="border-left:5px solid var(--C)"><b>Comunicador · Sanguíneo</b><br><span class="mut">Energia, contato e entusiasmo</span></div>
+<div class="pf" style="border-left:5px solid var(--P)"><b>Planejador · Fleumático</b><br><span class="mut">Calma, constância e harmonia</span></div>
+<div class="pf" style="border-left:5px solid var(--A)"><b>Analista · Melancólico</b><br><span class="mut">Detalhe, qualidade e profundidade</span></div>
+</div></div>
+<div class="card">
+<h2>Como responder</h2>
+<ul><li>São 40 perguntas, de dois tipos misturados: afirmações para você dizer o quanto combinam com você, e situações do dia a dia com 4 alternativas.</li><li>Responda pensando em como você realmente é, e não em como gostaria de ser.</li><li>Não há respostas certas ou erradas, e a primeira escolha costuma ser a mais verdadeira.</li><li>Leva cerca de 10 minutos.</li></ul>
+<h2 style="margin-top:20px">Identificação</h2>
+<p class="mut" style="font-size:.92rem">Seu nome acompanha o resultado. Ao final, você poderá salvar o relatório em PDF e enviá-lo para o WhatsApp da EfeitoCazulo.</p>
+<label class="fl">Nome completo *<input id="nm" type="text" autocomplete="name" placeholder="Digite seu nome"></label>
+<label class="fl">E-mail ou WhatsApp (opcional)<input id="ct" type="text" placeholder="Para contato"></label>
+<p id="err" class="hide" style="color:var(--E)">Informe seu nome para começar.</p>
+<p><button class="btn pri" id="start">Começar o teste</button></p>
+</div>
+</section>
+
+<section id="quiz" class="card hide">
+<div class="qbrand">EFEITOCAZULO</div>
+<div class="mut" id="cnt"></div>
+<div class="bar"><i id="prog"></i></div>
+<div class="lbl" id="hint"></div>
+<div class="q" id="qt"></div>
+<div id="opts"></div>
+<button class="btn" id="back">← Voltar</button>
+</section>
+
+<section id="res" class="hide"></section>
+</div>
+
+<script>
+try{document.getElementById("go").addEventListener("click",function(){go("intro")})}catch(e){}
+var QS={
+E:["Gosto de assumir o comando quando o grupo está sem direção.","Tomo decisões rápidas, mesmo com poucas informações.","Fico impaciente com quem demora para agir.","Competir e vencer me motiva muito.","Prefiro ir direto ao ponto, sem rodeios.","Diante de um obstáculo, me empenho ainda mais.","Tenho dificuldade em aceitar ordens que considero ilógicas.","Me incomoda ficar parado: preciso ver resultados.","Costumo dizer o que penso, mesmo que soe duro.","Gosto de desafios grandes e metas ousadas."],
+C:["Faço amigos com facilidade e gosto de conversar com todos.","Meu entusiasmo costuma contagiar as pessoas.","Tenho dificuldade em manter a mesma rotina por muito tempo.","Gosto de ser notado e reconhecido pelo que faço.","Me distraio facilmente com novas ideias e convites.","Expresso minhas emoções abertamente.","Prefiro trabalhar em equipe a trabalhar sozinho.","Costumo esquecer compromissos ou detalhes.","Sou otimista, mesmo em situações difíceis.","Gosto de contar histórias e animar o ambiente."],
+P:["Prefiro ambientes calmos e previsíveis.","Evito conflitos, mesmo que precise ceder.","Sou paciente e ouço os outros com atenção.","Tenho resistência a mudanças repentinas.","Gosto de seguir uma rotina estável.","Costumo guardar o que sinto para manter a paz.","As pessoas me procuram para pedir conselho e apoio.","Prefiro fazer uma coisa de cada vez, com constância.","Tenho dificuldade em dizer «não».","Sou leal e permaneço por muito tempo em relações e empregos."],
+A:["Gosto de analisar todos os detalhes antes de decidir.","Sou muito exigente comigo e com a qualidade do que faço.","Prefiro trabalhar sozinho, com silêncio e concentração.","Costumo perceber erros que os outros não veem.","Preciso de dados e provas antes de confiar numa ideia.","Me preocupo muito com o que pode dar errado.","Gosto de organização e de regras claras.","Levo tempo para confiar e me abrir com as pessoas.","Tenho tendência ao perfeccionismo e à autocrítica.","Sou reservado e penso muito antes de falar."]};
+var OPT=["Nada a ver comigo","Combina um pouco","Combina bastante","É a minha cara"];
+var R={
+E:{n:"Executor",t:"Colérico",c:"var(--E)",
+resumo:"Pessoa de ação, determinada e orientada a resultados. Enxerga o objetivo, traça o caminho mais curto e vai atrás. Lidera naturalmente, tem coragem para decidir e não se intimida diante de desafios.",
+fac:["Tomar decisões rápidas e assumir responsabilidade","Liderar e mobilizar pessoas em direção a metas","Manter o foco e a persistência diante de obstáculos","Resolver problemas de forma prática e objetiva","Começar projetos e tirar ideias do papel"],
+dif:["Impaciência com lentidão, erros e indecisão dos outros","Tendência a ser duro, autoritário ou controlador","Dificuldade em ouvir, delegar e demonstrar vulnerabilidade","Dificuldade em descansar; risco de estresse e esgotamento","Pode atropelar sentimentos e detalhes no caminho"],
+med:["Perder o controle de situações importantes","Ser visto como fraco ou incapaz","Fracassar ou não alcançar resultados","Ser manipulado ou dependente de outros","Ficar sem propósito ou desafio"],
+pot:["Liderança de alto impacto e visão estratégica","Capacidade de transformar crises em oportunidades","Empreendedorismo e construção de negócios","Inspirar equipes pelo exemplo e pela coragem","Desenvolvendo escuta e empatia, torna-se um líder admirado e não apenas temido"],
+rel:["Protetor e leal com quem ama; demonstra afeto mais por atitudes do que por palavras","Franco e direto: pode soar rude ou crítico sem perceber","Gosta de ter o comando da relação e pode competir com o parceiro","Precisa aprender a ouvir sem tentar resolver tudo","Valoriza respeito, honestidade e parceiros que não têm medo dele"],
+pro:["Orientado a metas, produtivo e muito iniciativa própria","Prefere autonomia e autoridade para decidir","Cobra desempenho de si e da equipe","Se destaca em cenários de pressão, mudança e competição","Pode ter conflitos com chefias muito controladoras ou processos lentos"],
+areas:["Gestão e liderança executiva","Empreendedorismo e negócios próprios","Vendas e negociação de alto nível","Direito, política e gestão de projetos","Engenharia de produção, logística e operações","Forças de segurança e áreas de comando"]},
+C:{n:"Comunicador",t:"Sanguíneo",c:"var(--C)",
+resumo:"Pessoa expansiva, calorosa e cheia de energia. Vive o momento, motiva quem está por perto e se conecta com facilidade. Traz leveza, criatividade e alegria aos ambientes onde está.",
+fac:["Comunicar-se com clareza, carisma e espontaneidade","Criar vínculos e fazer amizades rapidamente","Motivar e animar equipes e grupos","Adaptar-se a novas situações e pessoas","Gerar ideias criativas e enxergar o lado positivo"],
+dif:["Falta de constância e dificuldade em terminar o que começa","Desorganização, esquecimentos e atrasos","Falar demais e ouvir de menos","Impulsividade em decisões e gastos","Dependência de aprovação e de reconhecimento externo"],
+med:["Ser rejeitado ou excluído do grupo","Perder a liberdade e ficar preso à rotina","Ser ignorado ou considerado sem importância","Passar vergonha em público","Viver uma vida monótona e sem emoção"],
+pot:["Comunicação e influência em grande escala","Criar ambientes leves, engajados e colaborativos","Inovação, criatividade e visão de possibilidades","Inspirar mudança por meio de histórias e entusiasmo","Desenvolvendo disciplina, transforma carisma em resultados duradouros"],
+rel:["Afetuoso, divertido e sociável; todos gostam da sua companhia","Expressa emoções com intensidade e perdoa com facilidade","Pode se distrair e falhar em compromissos e detalhes do dia a dia","Precisa de atenção, elogios e demonstrações de carinho","Valoriza parceiros que compartilham aventuras e leveza"],
+pro:["Excelente no contato com pessoas, clientes e equipes","Cria bom clima e energia no ambiente de trabalho","Aprende rápido e se adapta a mudanças","Pode ter dificuldade com rotinas, prazos e burocracia","Rende mais com variedade, interação e reconhecimento"],
+areas:["Vendas, marketing e relacionamento com clientes","Comunicação, mídia, eventos e entretenimento","Treinamento, palestras e desenvolvimento humano","Turismo, hotelaria e relações públicas","Publicidade, criação e áreas artísticas","Recursos humanos e recrutamento"]},
+P:{n:"Planejador",t:"Fleumático",c:"var(--P)",
+resumo:"Pessoa calma, estável e confiável. Atua com constância, paciência e equilíbrio, e busca harmonia nos relacionamentos. Prefere o caminho seguro e é um pilar de apoio para quem convive com ela.",
+fac:["Manter a calma e o equilíbrio em situações de pressão","Ouvir com atenção e ser um bom mediador","Trabalhar com constância, método e paciência","Ser leal, confiável e perseverante","Planejar com cuidado e evitar riscos desnecessários"],
+dif:["Resistência a mudanças e dificuldade em sair da zona de conforto","Demora para decidir e para tomar iniciativa","Dificuldade em dizer «não» e impor limites","Guardar mágoas e sentimentos em silêncio","Passividade diante de conflitos necessários"],
+med:["Mudanças bruscas e situações imprevisíveis","Conflitos, brigas e rejeição","Perder a segurança e a estabilidade","Ser pressionado ou forçado a decidir rápido","Decepcionar as pessoas de quem gosta"],
+pot:["Estabilidade e consistência de longo prazo","Mediação de conflitos e construção de consensos","Liderança servidora, que apoia e fortalece o time","Execução cuidadosa e confiável de processos","Desenvolvendo assertividade, ganha voz e protagonismo sem perder a serenidade"],
+rel:["Companheiro paciente, fiel e acolhedor","Evita brigas e prioriza a paz, mesmo que se anule","Demonstra carinho de forma tranquila e constante","Pode guardar o que sente e parecer distante ou indiferente","Valoriza rotina, segurança e relações duradouras"],
+pro:["Funcionário dedicado, estável e de confiança","Trabalha bem em equipe e com processos definidos","Mantém o ritmo e a qualidade sem precisar de holofotes","Pode ter dificuldade com prazos apertados e mudanças repentinas","Rende mais em ambientes organizados, com clareza de papéis"],
+areas:["Educação, saúde e áreas de cuidado","Recursos humanos, mediação e atendimento","Administração, finanças e processos","Serviço público e áreas institucionais","Suporte técnico, operações e controle de qualidade","Psicologia, terapia e aconselhamento"]},
+A:{n:"Analista",t:"Melancólico",c:"var(--A)",
+resumo:"Pessoa profunda, criteriosa e comprometida com a qualidade. Pensa antes de agir, valoriza precisão e organização, e sente as coisas com intensidade. Tem senso de propósito e compromisso elevados.",
+fac:["Analisar dados, detalhes e riscos com profundidade","Manter alto padrão de qualidade e precisão","Planejar, organizar e seguir processos","Concentrar-se por longos períodos em tarefas complexas","Ser fiel, ético e comprometido com o que assume"],
+dif:["Perfeccionismo e autocrítica excessiva","Tendência ao pessimismo e à preocupação constante","Dificuldade em decidir por medo de errar","Isolamento e dificuldade em se abrir","Sensibilidade a críticas e facilidade em guardar mágoas"],
+med:["Cometer erros e ser criticado","Ser rejeitado ou incompreendido","Perder o controle ou a organização","Agir sem ter informações suficientes","Decepcionar por não atingir os próprios padrões"],
+pot:["Excelência técnica e especialização profunda","Análise estratégica e antecipação de problemas","Criação de sistemas, métodos e padrões de qualidade","Sensibilidade para arte, ciência e causas profundas","Desenvolvendo flexibilidade e autocompaixão, transforma exigência em realização saudável"],
+rel:["Leal, profundo e atencioso com poucos, mas bons, vínculos","Demora a confiar, mas quando confia se entrega por inteiro","Sensível: sente muito e pode guardar mágoas por tempo","Pode ser crítico ou exigente com o parceiro e consigo mesmo","Valoriza sinceridade, respeito e conversas significativas"],
+pro:["Meticuloso, detalhista e muito confiável na entrega","Prefere ambientes organizados, com regras e prazos claros","Rende mais com autonomia e tempo para pensar","Pode atrasar entregas por buscar perfeição","Tende a se destacar em funções técnicas e analíticas"],
+areas:["Ciência, pesquisa e tecnologia","Engenharia, programação e análise de dados","Contabilidade, auditoria e finanças","Medicina, direito e áreas de precisão","Arquitetura, design e artes","Qualidade, planejamento e compliance"]}};
+var SEC=[["fac","Facilidades","✅"],["dif","Dificuldades","⚠️"],["med","Medos mais comuns","😨"],["pot","Potenciais","🚀"],["rel","Nas relações","❤️"],["pro","No lado profissional","💼"],["areas","Áreas de trabalho mais indicadas","🎯"]];
+var SIT=[
+["Surge um problema inesperado no trabalho. Sua primeira reação é:",["Assumir o controle e resolver na hora.","Chamar o pessoal e buscar soluções juntos, com bom humor.","Manter a calma e ver com paciência o que dá para fazer.","Analisar a causa e os riscos antes de agir."]],
+["Num grupo de trabalho, você costuma ser quem:",["Define o objetivo e distribui as tarefas.","Anima o grupo e traz ideias novas.","Escuta todos e busca o consenso.","Cuida dos detalhes e da qualidade da entrega."]],
+["Numa festa, você geralmente:",["Conduz as conversas e puxa as decisões do grupo.","Circula, conversa com todos e anima o ambiente.","Fica com poucos amigos próximos, à vontade e sem pressa.","Observa mais e conversa a fundo com poucas pessoas."]],
+["Ao receber uma crítica, você tende a:",["Rebater com firmeza se achar injusta.","Ficar chateado na hora, mas logo esquecer.","Ficar quieto e guardar para si.","Remoer e analisar cada ponto por dias."]],
+["Diante de uma decisão importante, você:",["Decide rápido e corrige a rota depois.","Decide pela intuição e pela empolgação.","Prefere ter tempo e ouvir opiniões.","Pesquisa e compara tudo antes de escolher."]],
+["Para planejar uma viagem, você:",["Define o roteiro e as metas e cobra que todos sigam.","Deixa em aberto e curte o que aparecer.","Prefere um roteiro tranquilo, sem correria.","Faz planilha detalhada com horários e custos."]],
+["Quando alguém erra com você, você:",["Confronta diretamente e quer resolver já.","Fala sobre isso abertamente e logo perdoa.","Evita o conflito e deixa passar.","Fica magoado e demora a esquecer."]],
+["Seu ambiente de trabalho ideal é:",["Dinâmico, com desafios e autonomia.","Animado, com muita interação e novidade.","Calmo, estável e previsível.","Organizado, silencioso e com regras claras."]],
+["Quando você está sob estresse, tende a:",["Ficar irritado e mais controlador.","Ficar disperso, falar demais ou fugir do problema.","Se fechar e se retrair.","Ficar ansioso, preocupado e autocrítico."]],
+["Um amigo está com problemas. Você:",["Dá uma solução prática e direta.","Anima e tenta levantar o astral.","Escuta com paciência e acolhe.","Ouve com atenção e ajuda a entender o problema a fundo."]],
+["Quando começa um projeto novo, você:",["Parte para a ação e quer ver resultado logo.","Se empolga e conta para todo mundo.","Organiza um ritmo constante para ir até o fim.","Estuda tudo e prepara um plano completo."]],
+["Em reuniões, você costuma:",["Ir direto ao ponto e cobrar decisões.","Falar bastante e trazer ideias.","Ouvir mais e opinar quando perguntam.","Anotar, questionar dados e apontar falhas."]],
+["Seu maior incômodo no trabalho é:",["Gente lenta e indecisa.","Rotina chata e ambiente frio.","Mudanças bruscas e pressão.","Desorganização e trabalho malfeito."]],
+["Quando precisa aprender algo novo, você:",["Mergulha na prática e aprende fazendo.","Prefere aprender com outras pessoas, em grupo.","Aprende com calma, passo a passo.","Estuda a fundo, lê e pesquisa."]],
+["Seu jeito de se comunicar é:",["Direto, objetivo e firme.","Expressivo, animado e cheio de histórias.","Calmo, gentil e cuidadoso.","Preciso, reservado e detalhado."]],
+["Ao organizar sua casa ou sua rotina, você:",["Faz do seu jeito e rápido, focado no que importa.","Organiza no impulso, quando dá vontade.","Mantém uma rotina estável que funciona.","Tem tudo no lugar, com método e sistema."]],
+["Diante de uma mudança inesperada, você:",["Vê como desafio e já parte para a ação.","Se anima com a novidade.","Sente desconforto e precisa de tempo para se adaptar.","Se preocupa e busca entender todos os riscos."]],
+["O que mais te dá orgulho é:",["As metas alcançadas e as vitórias conquistadas.","Ser querido e inspirar as pessoas.","Ser alguém confiável e de paz para os outros.","Fazer algo com excelência e sem falhas."]],
+["Num conflito entre duas pessoas, você:",["Toma uma posição e resolve na hora.","Tenta descontrair e unir os dois.","Faz a mediação, ouvindo os dois lados.","Analisa os fatos para descobrir quem tem razão."]],
+["Quando você erra, você:",["Corrige rápido e segue em frente, sem se prolongar.","Dá risada, minimiza e segue em frente.","Se sente mal em silêncio e tenta não repetir.","Se cobra muito e revisa o erro várias vezes."]]];
+var R2={
+E:{palavra:"Ação",sintese:"Líder nato, decidido e orientado a resultados, que transforma desafios em conquistas.",
+prof:["O Executor funciona como um motor: precisa de direção, meta e movimento. Sua mente busca eficiência e, diante de um problema, a pergunta que surge é «qual o próximo passo?». Isso lhe dá coragem, senso de urgência e capacidade de liderar quando outros hesitam.","Por trás da firmeza, existe muitas vezes o medo de perder o controle ou de parecer vulnerável. Por isso o crescimento do Executor passa por aprender a desacelerar, escutar e reconhecer que força também inclui pedir ajuda e cuidar das pessoas durante o caminho."],
+mot:["Desafios e metas ambiciosas","Autonomia e poder de decisão","Resultados rápidos e mensuráveis","Competição saudável e reconhecimento por conquistas"],
+des:["Lentidão e burocracia","Microgerenciamento e falta de autonomia","Indecisão e falta de clareza de objetivos","Rotina sem desafios"],
+inc:["Dê objetivos claros e liberdade para escolher o caminho","Seja direto, objetivo e honesto","Reconheça resultados concretos","Ofereça novos desafios e responsabilidades","Mostre, com respeito, o impacto das atitudes dele nas pessoas"]},
+C:{palavra:"Conexão",sintese:"Pessoa expansiva, criativa e inspiradora, que conecta, anima e mobiliza pessoas.",
+prof:["O Comunicador vive de conexão. Sua energia nasce do contato com pessoas, de novas experiências e da possibilidade de transformar o ambiente com entusiasmo. Enxerga oportunidades onde outros veem problemas e tem o dom de fazer as pessoas se sentirem bem-vindas.","O desafio está em sustentar o brilho do início até o fim. Por trás da alegria, pode haver o medo de não ser aceito ou de perder a liberdade. Seu crescimento vem ao unir carisma com disciplina: organizar, concluir e escutar tanto quanto fala."],
+mot:["Reconhecimento e elogios","Interação, trabalho em grupo e novidades","Liberdade e flexibilidade","Ambientes leves, criativos e divertidos"],
+des:["Isolamento e rotina rígida","Críticas em público e frieza","Tarefas repetitivas e detalhistas","Ser ignorado ou excluído"],
+inc:["Reconheça e elogie, de preferência em público","Dê espaço para ideias e para falar","Divida grandes tarefas em etapas curtas com prazos","Use lembretes e acompanhamento carinhoso","Alinhe liberdade com combinados claros"]},
+P:{palavra:"Equilíbrio",sintese:"Pessoa serena, leal e constante, que traz estabilidade e harmonia aos ambientes.",
+prof:["O Planejador é o porto seguro. Sua presença transmite calma, e sua forma de agir, com paciência e constância, constrói confiança ao longo do tempo. Valoriza a harmonia, escuta de verdade e prefere resolver as coisas sem alarde.","O risco está em se acomodar e se calar para evitar conflitos. Por trás da serenidade pode haver o medo de mudanças e de desagradar. Seu crescimento acontece ao exercitar a voz, impor limites e dar pequenos passos fora da zona de conforto."],
+mot:["Segurança e estabilidade","Ambientes harmoniosos e cooperativos","Reconhecimento sincero pela dedicação","Rotina clara e tempo para se adaptar"],
+des:["Pressão e prazos muito apertados","Mudanças bruscas sem explicação","Conflitos e ambientes hostis","Ser forçado a se expor ou a decidir rápido"],
+inc:["Avise e explique as mudanças com antecedência","Dê tempo para decidir e se adaptar","Pergunte a opinião dele e escute de verdade","Valorize sua constância e lealdade","Estimule pequenos passos de iniciativa e posicionamento"]},
+A:{palavra:"Precisão",sintese:"Pessoa criteriosa, profunda e comprometida com a excelência, que transforma detalhes em qualidade.",
+prof:["O Analista enxerga camadas. Sua mente procura entender o porquê, medir riscos e entregar algo bem-feito. É sensível, ético e comprometido, e leva a sério tudo que assume, o que o torna referência em qualidade e confiança.","O preço dessa profundidade pode ser a autocrítica e o medo de errar, que paralisam decisões. Por trás da exigência há, muitas vezes, o desejo de ser aceito e de fazer a coisa certa. Seu crescimento vem ao aceitar o «bom o bastante», agir com informação imperfeita e se permitir ser acolhido."],
+mot:["Qualidade, precisão e excelência","Tempo para pensar e se aprofundar","Regras, processos e metas claras","Ser respeitado pelo conhecimento e pela competência"],
+des:["Desorganização e improviso","Pressão para entregar sem qualidade","Críticas duras ou injustas","Ambientes barulhentos e muito invasivos"],
+inc:["Forneça informações claras, dados e prazos realistas","Respeite seu tempo e seu espaço","Dê feedback gentil, específico e construtivo","Reconheça a qualidade e o esforço","Ajude a perceber que errar faz parte do processo"]}};
+for(var k in R2)for(var f in R2[k])R[k][f]=R2[k][f];
+var R3={
+E:{prof:["Quem tem o perfil Executor, ligado ao temperamento colérico, é movido por propósito e resultado. Desde cedo costuma ser visto como alguém forte, decidido e que «dá conta de tudo». Essa imagem é uma qualidade real, mas também pode virar um peso, porque nem sempre há espaço para mostrar cansaço ou dúvida.","Sua mente funciona como um motor: precisa de direção, meta e movimento. Diante de um problema, a pergunta que surge é «qual o próximo passo?», o que lhe dá coragem, senso de urgência e capacidade de liderar quando os outros hesitam. Por trás dessa firmeza, muitas vezes existe o medo de perder o controle ou de parecer vulnerável.","No dia a dia, o Executor tende a viver em ritmo acelerado: lista mentalmente o que falta fazer, se frustra quando o mundo não acompanha e mede o próprio valor pelo que entrega. Em momentos de estresse, a energia que normalmente move pode virar irritação, controle excessivo e dificuldade de confiar nos outros.","O ponto de virada está em direcionar essa força com consciência. Quando integra escuta, empatia e paciência ao seu poder de ação, o Executor deixa de ser apenas quem faz acontecer e passa a fazer acontecer junto com as pessoas, com resultados mais sólidos e relações mais saudáveis."],
+inc:["Estabeleça metas claras com prazos e acompanhe o seu progresso","Reserve tempo para descansar e trate isso como parte da estratégia","Pratique ouvir antes de responder, pelo menos uma vez por dia","Comemore suas conquistas e reconheça quem ajudou você","Busque desafios novos para não cair na rotina"],
+am:{p:["Amigo leal, protetor e presente nos momentos difíceis","Direto e sincero: fala a verdade, sem rodeios","Toma a iniciativa de organizar encontros e resolver pendências","Defende os amigos com coragem"],n:["Pode ser duro ou mandão e soar crítico","Impaciência com conversas longas ou dramas","Dificuldade em ouvir sem dar logo uma solução","Pode competir até em momentos de lazer"]},
+ro:{p:["Parceiro protetor, comprometido e que luta pela relação","Demonstra amor com atitudes e apoio prático","Toma decisões e traz segurança para o casal","Admira parceiros independentes e firmes"],n:["Pode controlar ou querer sempre a última palavra","Dificuldade em demonstrar vulnerabilidade e carinho em palavras","Discussões intensas por impaciência ou orgulho","Pode priorizar o trabalho em detrimento do casal"]},
+tr:{p:["Orientado a metas, produtivo e com muita iniciativa","Decide com rapidez e assume responsabilidade","Lidera em momentos de crise e pressão","Gosta de desafios e entrega resultados concretos"],n:["Autoritarismo e pouca paciência com a equipe","Dificuldade em delegar e aceitar opiniões contrárias","Pode atropelar processos e pessoas para chegar ao resultado","Risco de sobrecarga e esgotamento por querer abraçar tudo"]}},
+C:{prof:["O Comunicador, ligado ao temperamento sanguíneo, é movido por vínculo, novidade e experiência. Costuma ser a pessoa que quebra o gelo, que lembra do aniversário de todo mundo e que deixa o ambiente mais leve. Para ele, a vida fica mais colorida quando é compartilhada.","Sua mente é veloz e criativa: salta de uma ideia a outra, enxerga possibilidades e se empolga com facilidade. Isso o torna inspirador e flexível, mas também pode gerar dispersão, projetos inacabados, esquecimentos e dificuldade de sustentar o esforço depois que a novidade passa.","Por trás do brilho existe uma necessidade profunda de pertencer e ser valorizado. Quando se sente rejeitado, ignorado ou preso a uma rotina rígida, a energia cai, e ele pode reagir com exagero emocional, fuga ou busca excessiva de aprovação.","O amadurecimento do Comunicador acontece quando o carisma encontra estrutura. Com organização, foco e escuta ativa, ele transforma o dom de inspirar em resultados consistentes, e sua presença deixa de ser apenas animada para ser verdadeiramente transformadora."],
+inc:["Divida grandes objetivos em pequenas etapas com datas","Use agenda, lembretes e um parceiro que acompanhe você","Celebre cada pequena conclusão para manter o ânimo","Reserve momentos de silêncio para focar em uma coisa por vez","Cerque-se de pessoas que incentivem e desafiem você"],
+am:{p:["Amigo caloroso, divertido e que une as pessoas","Acolhe novos membros e faz todos se sentirem incluídos","Está sempre disposto a ouvir e a animar","Cria momentos leves e memoráveis"],n:["Pode esquecer datas, combinados e compromissos","Fala muito e pode monopolizar a conversa","Pode dispersar e dar menos atenção quando surge algo novo","Sensível a críticas e a sentir-se deixado de lado"]},
+ro:{p:["Parceiro afetuoso, romântico e expressivo","Traz leveza, humor e aventura para a relação","Elogia, demonstra carinho e faz o outro se sentir especial","Perdoa com facilidade e não guarda rancor"],n:["Pode perder o interesse quando a relação cai na rotina","Impulsividade e falta de constância nos combinados","A necessidade de atenção pode gerar ciúme ou carência","Dificuldade em lidar com conversas sérias e conflitos profundos"]},
+tr:{p:["Excelente comunicação e facilidade de criar vínculos","Traz energia, ideias criativas e bom clima à equipe","Persuasivo e inspirador com clientes e colegas","Adapta-se bem a mudanças e a novos contextos"],n:["Desorganização, atrasos e dificuldade com prazos","Dispersão e dificuldade em concluir tarefas rotineiras","Fala demais e pode perder o foco nas reuniões","Pode prometer mais do que consegue entregar"]}},
+P:{prof:["O Planejador, ligado ao temperamento fleumático, é movido por paz, segurança e constância. Costuma ser a pessoa que mantém a cabeça fria quando todos se agitam e que os outros procuram quando precisam de apoio sem julgamento.","Sua forma de agir é gradual e consistente: prefere entender antes de mudar, avançar com cuidado e cumprir o combinado. Isso lhe dá confiabilidade, mas pode virar acomodação, adiamento de decisões e resistência a mudanças que seriam benéficas.","Por trás da calma, há muitas vezes emoções guardadas. Para evitar conflitos, o Planejador pode engolir incômodos, dizer «sim» quando queria dizer «não» e acumular mágoas em silêncio, o que com o tempo gera cansaço, distanciamento ou explosões raras e inesperadas.","Seu crescimento passa por reconhecer que paz verdadeira não é ausência de conflito, e sim a coragem de se posicionar com respeito. Ao desenvolver voz, iniciativa e limites, o Planejador mantém sua serenidade e passa a ocupar o lugar de destaque que merece."],
+inc:["Dê pequenos passos fora da zona de conforto, um por semana","Treine dizer o que pensa e sente, começando por situações simples","Defina prazos próprios para decidir e não adiar","Lembre das suas conquistas passadas para ganhar confiança","Registre suas vitórias e peça apoio quando precisar"],
+am:{p:["Amigo fiel, paciente e sempre disponível para escutar","Acolhe sem julgar e transmite tranquilidade","Mantém amizades por muitos anos","Evita brigas e é um ótimo conciliador"],n:["Dificuldade em dizer «não» e acaba sobrecarregado","Guarda incômodos e mágoas sem comunicar","Pode ser passivo e esperar que o outro tome a iniciativa","Pode parecer indiferente por não expressar o que sente"]},
+ro:{p:["Parceiro leal, carinhoso e presente na rotina","Estável, confiável e pouco dado a dramas","Escuta com paciência e busca o diálogo tranquilo","Cuida da harmonia e do bem-estar do lar"],n:["Pode se acomodar e deixar a relação cair na rotina","Dificuldade em expressar desejos e necessidades","Evita conversas difíceis, acumulando questões não resolvidas","Resistência a mudanças e a novas experiências a dois"]},
+tr:{p:["Confiável, constante e comprometido com o que assume","Ótimo trabalho em equipe e boa mediação de conflitos","Mantém a calma sob pressão e o ritmo estável","Paciente com processos e com pessoas"],n:["Resistência a mudanças e a novos métodos","Demora para decidir e para tomar iniciativa","Dificuldade em se posicionar e defender suas ideias","Tende a se acomodar e evitar riscos importantes"]}},
+A:{prof:["O Analista, ligado ao temperamento melancólico, é movido por sentido, qualidade e profundidade. Costuma ser a pessoa que lê as entrelinhas, percebe o que ninguém notou e se preocupa em fazer a coisa certa, mesmo quando ninguém está olhando.","Sua mente procura entender causas, padrões e riscos. Isso gera trabalhos bem-feitos, decisões consistentes e grande confiabilidade, mas também pode levar à análise excessiva, à demora para agir e à sensação de que nunca está bom o bastante.","Por trás da exigência está uma sensibilidade intensa. O Analista sente muito, lembra de tudo e leva a sério as relações e as críticas. Quando se sente incompreendido ou pressionado, tende a se isolar, remoer pensamentos e se cobrar além do saudável.","O desenvolvimento do Analista vem ao equilibrar exigência com autocompaixão. Ao aceitar o «bom o bastante», confiar mais nas pessoas e agir mesmo sem certeza total, ele mantém sua excelência sem pagar o preço da ansiedade, e sua profundidade se torna um grande presente para quem convive com ele."],
+inc:["Defina o que é «bom o bastante» e um prazo para concluir","Troque a autocrítica por uma pergunta: «o que eu aprendi?»","Trate a si mesmo com a gentileza que teria com um amigo","Aja mesmo sem todas as informações, em pequenos testes","Reserve tempo para relações e atividades prazerosas"],
+am:{p:["Amigo profundo, atencioso e extremamente leal","Lembra detalhes importantes sobre as pessoas","Dá conselhos ponderados e confiáveis","Prefere poucos vínculos, mas verdadeiros"],n:["Demora para se abrir e confiar","Pode parecer frio, reservado ou distante","Sensível a críticas e guarda mágoas por muito tempo","Tende a se isolar quando está chateado"]},
+ro:{p:["Parceiro dedicado, fiel e profundamente comprometido","Atento aos detalhes e às necessidades do outro","Busca uma relação sincera, séria e duradoura","Gestos românticos pensados e cheios de significado"],n:["Pode ser exigente, crítico ou perfeccionista com o parceiro","Ciúme e insegurança, com tendência a remoer pensamentos","Dificuldade em demonstrar emoções e conversar sobre sentimentos","Pode se retrair e se isolar em momentos de tensão"]},
+tr:{p:["Meticuloso, preciso e comprometido com a qualidade","Planeja, organiza e antecipa problemas","Ético, responsável e confiável nas entregas","Concentra-se profundamente em tarefas complexas"],n:["Perfeccionismo que atrasa entregas","Dificuldade em delegar e em aceitar erros alheios","Pessimismo e foco excessivo nos problemas","Tende a trabalhar isolado e a evitar exposição"]}}};
+for(var k in R3)for(var f in R3[k])R[k][f]=R3[k][f];
+function esc(t){return String(t).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+var WAPP="5571992532213",CUR=null,WAMSG="";
+function prep(top,sec,pc,keys){CUR={top:top,sec:sec,pc:pc,keys:keys};return""}
+function waLink(){var r=R[CUR.top];var t="Olá, EfeitoCazulo! Meu nome é "+who.nome+" e fiz o teste de Identificação e Análise de Perfil Comportamental. Meu perfil predominante é "+r.n+" ("+r.t+"), com "+R[CUR.sec].n+" como perfil secundário. Segue o PDF do meu resultado.";WAMSG=t;return"https://wa.me/"+WAPP+"?text="+encodeURIComponent(t)}
+function copyWa(){var m=$("pdm"),ta=document.createElement("textarea");ta.value=WAMSG;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();var ok=false;try{ok=document.execCommand("copy")}catch(e){}document.body.removeChild(ta);
+m.textContent=ok?"Mensagem copiada! Abra o WhatsApp, procure o número (71) 99253-2213 e cole a mensagem. Depois anexe o PDF.":"Não foi possível copiar. Salve o número (71) 99253-2213 no WhatsApp e escreva seu nome e seu perfil."}
+function endCard(){return'<div class="card noprint" style="border:2px solid var(--pri)"><h2>📄 Salve e envie seu resultado</h2><p>1) Toque em <b>Salvar resultado em PDF</b>.<br>2) Depois toque em <b>Enviar pelo WhatsApp</b> para abrir a conversa com a EfeitoCazulo e anexe o PDF salvo.</p><p><button class="btn pri" onclick="savePdf()">Salvar resultado em PDF</button> <a class="btn" style="display:inline-block;text-decoration:none" href="'+waLink()+'" target="_blank" rel="noopener">Enviar pelo WhatsApp</a> <button class="btn" onclick="copyWa()">Copiar mensagem</button></p><p class="mut" id="pdm" style="font-size:.88rem">Se o botão do WhatsApp não abrir, toque em «Copiar mensagem», salve o número (71) 99253-2213 e cole a mensagem na conversa.</p></div>'}
+function savePdf(){$("pdm").textContent="Na tela que abrir, escolha «Salvar como PDF». No iPhone: toque em Compartilhar e depois em «Salvar em Arquivos». Em seguida, toque em «Enviar pelo WhatsApp» e anexe o arquivo.";window.print()}
+var COMBO={
+EC:{t:"Executor com Comunicador: o líder carismático",p:["Você combina a determinação de quem quer resultado com a energia de quem sabe mobilizar pessoas. Costuma liderar pelo entusiasmo e pelo exemplo: tem uma meta na cabeça, convence os outros de que ela vale a pena e puxa o grupo para a ação. É uma combinação típica de quem empreende, vende, apresenta ideias e abre caminhos, pois une coragem para decidir e facilidade para se comunicar.","Nas relações, tende a ser intenso e expressivo: gosta de estar no centro, de viver experiências e de ter ao lado pessoas que acompanhem seu ritmo. O risco é viver acelerado demais, assumir muitos projetos ao mesmo tempo e tratar quem tem outro ritmo como lento. Sob estresse, pode alternar entre a irritação do Executor e a impulsividade do Comunicador, tomando decisões rápidas demais e falando antes de pensar."],
+s:["Visão e influência: você enxerga o objetivo e consegue engajar os outros nele","Coragem e carisma andam juntos, o que abre portas e gera confiança","Energia contagiante para iniciar projetos e vencer resistências"],
+c:["Pressa e impulsividade podem gerar decisões pouco analisadas e retrabalho","Dificuldade com detalhes, rotina e acompanhamento até o fim","Competir por atenção ou ser autoritário quando contrariado"],
+d:["Escuta ativa e paciência com quem tem outro ritmo","Organização e disciplina para concluir o que começa","Pausas para analisar riscos antes de decisões importantes"]},
+EP:{t:"Executor com Planejador: a força tranquila",p:["Aqui a firmeza do Executor encontra a constância do Planejador. O resultado é alguém que sabe aonde quer chegar e vai com método, sem alarde. Você tende a ser mais ponderado que um Executor puro: pensa no passo seguinte, cumpre o que promete e sustenta o esforço por muito tempo. As pessoas costumam enxergar em você firmeza com estabilidade.","Nas relações, é protetor e leal, mais de atitudes do que de palavras. Por dentro, pode haver um conflito silencioso: uma parte quer agir e se impor, outra quer manter a paz e evitar atrito. Muitas vezes você engole o incômodo por um tempo e depois reage de forma firme e direta, o que surpreende quem estava acostumado à sua calma."],
+s:["Determinação com paciência: persegue metas sem atropelar o processo","Confiabilidade alta: faz o que promete e mantém o ritmo","Lidera com serenidade, passando segurança em momentos de crise"],
+c:["Impulso de agir versus desejo de preservar a paz, gerando ambivalência","Acumular irritação em silêncio e depois explodir","Resistência a mudanças que não partiram de você"],
+d:["Expressar incômodos cedo e com clareza, antes que virem tensão","Flexibilidade diante de ideias e ritmos diferentes","Demonstrar afeto e reconhecimento em palavras, não só em atitudes"]},
+EA:{t:"Executor com Analista: o estrategista exigente",p:["Você une velocidade de execução com rigor de análise. Quer resultado, mas quer resultado bem-feito. Tende a planejar com precisão, definir metas claras e cobrar padrão elevado, de si e dos outros. É a combinação frequente em quem lidera áreas técnicas, gerencia projetos complexos e toma decisões estratégicas com base em dados.","O lado exigente pode pesar: você tem pouca tolerância a erros, à lentidão e à desorganização, e nem sempre percebe como sua cobrança chega às pessoas. Nas relações, costuma ser reservado e direto ao mesmo tempo, o que pode parecer frieza. Sob pressão, alterna entre o controle do Executor e o perfeccionismo e a autocrítica do Analista, com risco de sobrecarga."],
+s:["Ação com embasamento: decide rápido, mas com critério","Foco em qualidade e resultado ao mesmo tempo","Capacidade de enxergar riscos e ainda assim avançar"],
+c:["Perfeccionismo e controle excessivo, dificultando delegar","Cobrança dura que pode ser sentida como crítica","Conflito interno entre agir já e esperar ter mais dados"],
+d:["Delegar com confiança e aceitar o «bom o bastante»","Reconhecer o esforço dos outros antes de apontar falhas","Cuidar do descanso e da vida emocional, não só da performance"]},
+CE:{t:"Comunicador com Executor: o motivador em ação",p:["Seu ponto de partida é a energia social e o entusiasmo do Comunicador, reforçados pela objetividade e pela iniciativa do Executor. Você conversa, influencia e também faz acontecer. Diferentemente de um Comunicador puro, costuma ter mais foco em metas e menos tolerância a ficar só no discurso. É comum encontrar essa combinação em vendas, liderança de equipes, empreendedorismo e comunicação.","Nas relações, é caloroso e intenso, gosta de movimento e de ter pessoas por perto. O desafio é o ritmo: pode se empolgar, assumir demais e se frustrar quando os outros não acompanham. Em momentos de estresse, o lado Executor pode surgir de forma impaciente e brusca, e o lado Comunicador de forma dramática ou dispersa."],
+s:["Inspira e executa: mobiliza as pessoas e também entrega","Muita energia, coragem para começar e facilidade para convencer","Boa presença e liderança natural em grupos"],
+c:["Impulsividade em decisões, falas e compromissos","Impaciência com pessoas mais lentas ou detalhistas","Dificuldade com rotina, prazos pequenos e acompanhamento de detalhes"],
+d:["Planejar e registrar compromissos para não depender só do impulso","Ouvir mais do que fala, principalmente em momentos de tensão","Transformar entusiasmo em constância, com metas divididas em etapas"]},
+CP:{t:"Comunicador com Planejador: o acolhedor",p:["Você une a simpatia do Comunicador com a serenidade do Planejador. É alguém caloroso, que cria vínculos com facilidade e, ao mesmo tempo, passa segurança e paciência. As pessoas se sentem bem ao seu lado: você anima sem atropelar e escuta sem julgar. É uma combinação frequente em quem trabalha com cuidado, educação, atendimento e relações humanas.","O desafio é a firmeza. Como valoriza harmonia e aprovação, pode ter dificuldade em dizer «não», em confrontar situações desconfortáveis e em tomar decisões que desagradem. Pode alternar entre períodos de grande energia social e momentos de retraimento. Sob estresse, tende a evitar o conflito, adiar decisões ou compensar com excesso de agrado."],
+s:["Empatia, escuta e carisma ao mesmo tempo","Excelente construtor de ambientes leves, acolhedores e colaborativos","Bom mediador, capaz de aproximar pessoas diferentes"],
+c:["Dificuldade em dizer «não» e em impor limites","Evitar conflitos necessários para manter a harmonia","Procrastinação e falta de iniciativa quando o assunto é desconfortável"],
+d:["Assertividade: dizer o que pensa de forma gentil e firme","Priorizar tarefas e prazos sem esperar pressão externa","Fazer escolhas próprias mesmo sem aprovação de todos"]},
+CA:{t:"Comunicador com Analista: o comunicador de conteúdo",p:["É uma combinação de opostos que, quando equilibrada, é muito rica. Você tem facilidade para se expressar e se relacionar, e também gosta de profundidade, dados e qualidade. Consegue explicar assuntos complexos de forma clara e envolvente, o que é muito valioso para ensinar, aconselhar, liderar e criar. Costuma ser visto como alguém sociável, mas também reflexivo.","O lado conflituoso aparece na alternância: em alguns momentos você quer se expor e conversar, em outros precisa de silêncio e recolhimento. Pode ser muito sociável e, no momento seguinte, muito autocrítico, com a sensação de ter falado demais ou de não ter sido perfeito. A sensibilidade a críticas costuma ser alta, pois você deseja ser aceito e fazer bem-feito ao mesmo tempo."],
+s:["Une carisma e profundidade: comunica com conteúdo","Criatividade com método, o que ajuda a transformar ideias em projetos consistentes","Facilidade para se conectar e também para ouvir de forma atenta"],
+c:["Oscilação entre expansão social e isolamento","Autocrítica depois de situações sociais ou de exposição","Dificuldade em decidir entre agir por intuição e esperar ter certeza"],
+d:["Aceitar a própria oscilação e respeitar seus momentos de recarga","Tratar-se com mais gentileza após erros ou exposição","Estabelecer prazos para decidir, mesmo sem todas as informações"]},
+PE:{t:"Planejador com Executor: o líder sereno",p:["Seu traço principal é a calma e a constância do Planejador, com um toque de determinação e iniciativa do Executor. Costuma ser tranquilo no dia a dia, mas firme quando necessário. É alguém em quem as pessoas confiam, porque entrega o que promete e mantém a cabeça fria diante de problemas. É uma boa base para liderança estável, gestão de pessoas e funções de responsabilidade.","O contraste interno está entre acomodar e agir. Em geral prefere evitar conflitos, mas, quando é pressionado além do limite, pode surgir um lado firme e até duro, que surpreende os outros. Nas relações, é leal e protetor, embora às vezes demore a expressar o que sente e depois o faça de forma direta demais."],
+s:["Serenidade com firmeza: calmo sob pressão e decidido quando precisa","Constância e iniciativa, o que gera resultados consistentes","Liderança respeitada, que não precisa de gritos para ser ouvida"],
+c:["Guardar incômodos por muito tempo e reagir de forma abrupta","Alternar entre passividade e imposição","Resistência a mudar o próprio plano, mesmo quando há bons argumentos"],
+d:["Comunicar limites e incômodos no momento em que surgem","Tomar iniciativa com mais frequência, sem esperar ser pressionado","Abrir espaço para novas ideias e mudanças de rota"]},
+PC:{t:"Planejador com Comunicador: o amigo de todos",p:["Você tem a calma e a lealdade do Planejador com o calor e a simpatia do Comunicador. É uma pessoa agradável, acessível e confiável, que os outros procuram para conversar, desabafar e pedir ajuda. Costuma ser bom em manter relações duradouras e em criar um clima de harmonia, seja no trabalho, na família ou entre amigos.","A dificuldade costuma estar em priorizar a si mesmo: você se doa, evita desagradar e pode acabar sobrecarregado ou ressentido sem dizer nada. Também pode oscilar entre o desejo de sossego e o de ser reconhecido e incluído. Sob estresse, tende a se retrair, adiar decisões e buscar conforto na rotina e nas pessoas próximas."],
+s:["Acolhimento e leveza ao mesmo tempo","Relações duradouras, baseadas em lealdade e simpatia","Excelente capacidade de ouvir, aconselhar e apaziguar"],
+c:["Dificuldade de dizer «não» e de colocar as próprias necessidades em primeiro lugar","Mágoas guardadas por querer manter a paz","Procrastinação em decisões e mudanças importantes"],
+d:["Expressar necessidades e limites de forma clara","Dar pequenos passos fora da zona de conforto","Reconhecer o próprio valor sem depender de aprovação"]},
+PA:{t:"Planejador com Analista: o guardião da qualidade",p:["Esta combinação reúne a constância do Planejador com o rigor do Analista. Você é metódico, paciente, organizado e confiável. Costuma trabalhar em silêncio, com cuidado e atenção aos detalhes, e entrega com consistência. É um perfil muito valorizado em funções que exigem precisão, processos bem-feitos e responsabilidade a longo prazo.","O risco é a imobilidade: a cautela dos dois perfis pode virar excesso de análise, medo de errar e resistência a mudanças. Nas relações, é leal, discreto e atencioso, mas pode ter dificuldade em demonstrar o que sente e em se abrir. Sob estresse, tende a se isolar, remoer pensamentos e acumular tensão em silêncio."],
+s:["Qualidade com constância: entrega bem-feito e dentro do ritmo","Muita confiabilidade, ética e senso de responsabilidade","Capacidade de planejar e prever problemas com calma"],
+c:["Excesso de cautela e demora para decidir ou começar","Resistência a mudanças, mesmo necessárias","Guardar sentimentos e preocupações, com risco de isolamento"],
+d:["Agir com informações imperfeitas, em pequenos testes","Compartilhar mais o que pensa e sente com pessoas de confiança","Aceitar mudanças como parte do crescimento"]},
+AE:{t:"Analista com Executor: o perfeccionista decidido",p:["Seu traço principal é a profundidade e a exigência do Analista, com a iniciativa e a firmeza do Executor. Você analisa antes de agir, mas, quando decide, vai até o fim com determinação. É uma combinação muito presente em quem lidera áreas técnicas, projetos de alta responsabilidade e funções que pedem precisão com autoridade.","Seu padrão é elevado e a tolerância a erros é baixa, o que pode tornar você duro consigo e com os outros. Nas relações, é reservado e sério, e demonstra afeto mais com atitudes e compromisso do que com palavras. Sob pressão, pode alternar entre o isolamento crítico do Analista e a irritação direta do Executor."],
+s:["Análise sólida com capacidade de decisão e execução","Exigência de qualidade com disciplina para entregar","Liderança técnica respeitada pelo preparo e pela firmeza"],
+c:["Perfeccionismo e cobrança excessiva, sobretudo com a equipe","Dificuldade em delegar e em aceitar o ritmo dos outros","Conflito entre esperar ter certeza e agir com rapidez"],
+d:["Reconhecer o esforço e o progresso, não só o resultado final","Expressar emoções e apreço com mais frequência","Descansar e buscar prazer fora do trabalho"]},
+AC:{t:"Analista com Comunicador: o profundo expressivo",p:["Você é predominantemente reflexivo, criterioso e exigente, mas com uma camada de calor humano e facilidade de comunicação do Comunicador. Isso faz de você alguém que consegue ouvir com profundidade e também se expressar com clareza e sensibilidade. É uma combinação muito favorável a ensinar, aconselhar, escrever, atender pessoas e atuar em áreas que unem conteúdo e relação.","A tensão está entre o recolhimento e a exposição. Em alguns momentos você precisa de silêncio, em outros de contato e reconhecimento. Pode se sentir dividido entre fazer perfeito e agir com leveza, e tende a se criticar depois de situações sociais. Sob estresse, alterna entre isolamento e busca de acolhimento, e pode ser muito sensível a críticas."],
+s:["Profundidade com facilidade de comunicação","Sensibilidade para perceber o outro e capacidade de expressar isso","Criatividade apoiada em método e qualidade"],
+c:["Oscilação entre se expor e se recolher","Autocrítica após falar ou se mostrar","Dificuldade de relaxar por querer fazer tudo muito bem"],
+d:["Permitir-se ser imperfeito em público","Cuidar do descanso e respeitar seus momentos de silêncio","Pedir apoio e reconhecimento de forma direta"]},
+AP:{t:"Analista com Planejador: o profissional metódico e reservado",p:["Seu traço marcante é a precisão do Analista suavizada pela paciência e pela estabilidade do Planejador. Você tende a ser calmo, organizado, responsável e muito cuidadoso, preferindo ambientes previsíveis e processos claros. Costuma ser alguém em quem se pode confiar para fazer algo com cuidado, do começo ao fim, sem alarde.","O principal risco é ficar preso na cautela e no silêncio. Você pode adiar decisões, evitar conflitos e guardar sentimentos por muito tempo, o que gera cansaço emocional. Nas relações, é leal, discreto e atencioso, mas pode parecer distante. Em períodos de pressão, tende a se isolar, ruminar preocupações e resistir a mudanças."],
+s:["Excelente em tarefas de precisão, constância e responsabilidade","Calma e análise juntas, o que reduz erros","Lealdade e discrição nas relações"],
+c:["Paralisia por excesso de análise e de cautela","Isolamento e dificuldade de expressar emoções","Resistência a mudanças e a ambientes imprevisíveis"],
+d:["Tomar decisões em prazos definidos, sem esperar certeza total","Expressar necessidades e emoções a pessoas de confiança","Experimentar mudanças pequenas e graduais"]}};
+function comboCard(top,sec){var c=COMBO[top+sec];if(!c)return"";
+return'<div class="card" style="border-top:5px solid '+R[top].c+'"><div class="lbl">Sua combinação de perfis</div><h2>'+c.t+'</h2>'+c.p.map(function(x){return'<p>'+x+'</p>'}).join("")+'<div class="two"><div class="good" style="padding-left:12px"><b>Onde as energias se complementam</b>'+li(c.s)+'</div><div class="bad" style="padding-left:12px"><b>Onde podem entrar em conflito</b>'+li(c.c)+'</div></div><p style="margin-top:12px"><b>O que desenvolver</b></p>'+li(c.d)+'</div>'}
+function tp(t,i,o){return'<div class="card"><h2>'+i+' '+t+'</h2><div class="two"><div class="good" style="padding-left:12px"><b>Tendências positivas</b>'+li(o.p)+'</div><div class="bad" style="padding-left:12px"><b>Tendências negativas</b>'+li(o.n)+'</div></div></div>'}
+
+var list=[],ans=[],i=0;
+function $(id){return document.getElementById(id)}
+function shuffle(a){for(var j=a.length-1;j>0;j--){var k=Math.floor(Math.random()*(j+1));var t=a[j];a[j]=a[k];a[k]=t}return a}
+function hideAll(){["cover","intro","quiz","res"].forEach(function(x){$(x).classList.add("hide")})}
+function go(id){hideAll();$(id).classList.remove("hide");scrollTo(0,0)}
+var who={nome:"",contato:""};
+function start(){var n=$("nm").value.trim();if(n.length<2){$("err").classList.remove("hide");$("nm").focus();return}
+$("err").classList.add("hide");who={nome:n,contato:$("ct").value.trim()};list=[];
+for(var p in QS)QS[p].slice(0,5).forEach(function(t){list.push({k:"l",p:p,t:t})});
+SIT.forEach(function(x){list.push({k:"s",t:x[0],o:shuffle(["E","C","P","A"].map(function(p,n){return{p:p,t:x[1][n]}}))})});
+shuffle(list);ans=[];i=0;go("quiz");show()}
+function show(){var q=list[i];$("cnt").textContent="Pergunta "+(i+1)+" de "+list.length;$("prog").style.width=(i/list.length*100)+"%";
+$("hint").textContent=q.k=="l"?"Quanto esta frase combina com você?":"Escolha a alternativa que mais combina com você";
+$("qt").textContent=q.t;
+var op=q.k=="l"?OPT:q.o.map(function(x){return x.t});
+$("opts").innerHTML=op.map(function(o,n){return'<button class="btn opt'+(ans[i]===n?' sel':'')+'" data-n="'+n+'">'+o+'</button>'}).join("");
+$("back").style.visibility=i?"visible":"hidden"}
+$("opts").addEventListener("click",function(e){var b=e.target.closest(".opt");if(!b)return;ans[i]=+b.dataset.n;
+if(i<list.length-1){i++;show()}else finish()});
+$("back").onclick=function(){if(i>0){i--;show()}};
+$("go").onclick=function(){go("intro")};
+$("start").onclick=start;
+function li(a){return"<ul>"+a.map(function(x){return"<li>"+x+"</li>"}).join("")+"</ul>"}
+function finish(){var L={E:0,C:0,P:0,A:0},S={E:0,C:0,P:0,A:0};
+list.forEach(function(q,n){if(q.k=="l")L[q.p]+=ans[n];else S[q.o[ans[n]].p]++});
+var pc={};for(var k in L)pc[k]=Math.round((L[k]/15+S[k]/20)/2*100);
+var keys=Object.keys(pc).sort(function(a,b){return pc[b]-pc[a]});var top=keys[0],sec=keys[1],r=R[top];
+var h='<div class="card hero" style="--c:'+r.c+'"><div class="lbl">EfeitoCazulo · Resultado de '+esc(who.nome)+'</div><div class="mut">Seu perfil predominante</div><h1>'+r.n+' <span class="mut" style="font-weight:400">· '+r.t+'</span></h1>'
++'<p><span class="tag" style="background:'+r.c+'">'+r.palavra+'</span></p><p><b>Síntese:</b> '+r.sintese+'</p><p>'+r.resumo+'</p>';
+if(pc[top]-pc[sec]<=6)h+='<p class="mut">Seus resultados em <b>'+r.n+'</b> e <b>'+R[sec].n+'</b> ficaram muito próximos, o que indica um perfil combinado. Vale ler também o relatório do segundo perfil, na seção «Conheça todos os perfis».</p>';
+else h+='<p class="mut">Perfil secundário: <b>'+R[sec].n+'</b> ('+pc[sec]+'%). Ele complementa seus traços principais.</p>';
+h+='</div>'+prep(top,sec,pc,keys)+'<div class="card"><h2>Sua afinidade com cada perfil</h2>';
+keys.forEach(function(k){h+='<div class="row"><b>'+R[k].n+'</b><div class="tr"><i style="width:'+pc[k]+'%;background:'+R[k].c+'"></i></div><span>'+pc[k]+'%</span></div>'});
+h+='</div><div class="card"><h2>🔎 Análise aprofundada</h2>'+r.prof.map(function(t){return'<p>'+t+'</p>'}).join("")+'</div>'+comboCard(top,sec);
+h+='<div class="two"><div class="card good"><h2>✅ Facilidades</h2>'+li(r.fac)+'</div><div class="card bad"><h2>⚠️ Dificuldades</h2>'+li(r.dif)+'</div></div>';
+h+='<div class="two"><div class="card"><h2>🔥 O que motiva</h2>'+li(r.mot)+'</div><div class="card"><h2>🧊 O que desmotiva</h2>'+li(r.des)+'</div></div>';
+h+='<div class="card"><h2>🌱 Como se autoincentivar</h2>'+li(r.inc)+'</div>';
+[SEC[2],SEC[3],SEC[6]].forEach(function(x,n){if(n==2)h+=tp('Nas relações de amizade','🤝',r.am)+tp('Nas relações românticas','❤️',r.ro)+tp('No ambiente de trabalho','💼',r.tr);h+='<div class="card"><h2>'+x[2]+' '+x[1]+'</h2>'+li(r[x[0]])+'</div>'});
+h+='<div class="card noprint"><h2>Conheça todos os perfis</h2>';
+Object.keys(R).forEach(function(k){var o=R[k];h+='<details><summary style="color:'+o.c+'">'+o.n+' · '+o.t+'</summary><p class="mut" style="margin-top:8px">'+o.sintese+'</p><div class="two"><div><b>✅ Facilidades</b>'+li(o.fac)+'</div><div><b>⚠️ Dificuldades</b>'+li(o.dif)+'</div></div></details>'});
+h+='</div><div class="card"><h2>Sobre este teste</h2><p class="mut">Todos temos um pouco de cada perfil; o resultado mostra a tendência predominante, e não um rótulo fixo. Esta é uma ferramenta de autoconhecimento e não substitui avaliação psicológica profissional.</p><p class="mut">Identificação e Análise de Perfil Comportamental · EfeitoCazulo</p></div>';
+h+=endCard();h+='<div class="noprint" style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn" onclick="start()">Refazer o teste</button></div>';
+$("res").innerHTML=h;go("res")}
+</script>
+</body>
+</html>
