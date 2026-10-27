@@ -3,13 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="format-detection" content="telephone=no">
+<meta name="color-scheme" content="light dark">
+<noscript><style>#go{display:none!important}.nojs{display:block!important}</style></noscript>
 <title>Identificação e Análise de Perfil Comportamental · EfeitoCazulo</title>
 <style>
 :root{--bg:#f6f5f1;--card:#fff;--tx:#1f2430;--mut:#667085;--bd:#e3e1d9;--pri:#3b4a8c;--E:#c8382e;--C:#d98a0b;--P:#2f8f5b;--A:#2f6fb5;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15171c;--card:#1f232b;--tx:#eceef3;--mut:#9aa3b2;--bd:#323846;--pri:#8d9bff;--E:#ff7a6e;--C:#f2b544;--P:#5ecf92;--A:#6fb0f5;color-scheme:dark}}
 :root[data-theme="dark"]{--bg:#15171c;--card:#1f232b;--tx:#eceef3;--mut:#9aa3b2;--bd:#323846;--pri:#8d9bff;--E:#ff7a6e;--C:#f2b544;--P:#5ecf92;--A:#6fb0f5;color-scheme:dark}
-*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%;text-size-adjust:100%}html{scroll-padding-top:env(safe-area-inset-top,0px)}
 body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
 .wrap{max-width:760px;margin:0 auto;padding:20px 16px 48px}
 .card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:22px;margin-bottom:16px}
@@ -19,14 +22,14 @@ p{margin:0 0 10px}.mut{color:var(--mut)}
 .btn.pri{background:var(--pri);color:#fff;border-color:var(--pri)}
 :root[data-theme="dark"] .btn.pri,.dk .btn.pri{color:#111}
 .opt{display:block;width:100%;text-align:left;margin-bottom:10px;padding:14px 16px}
-.opt.sel{border-color:var(--pri);background:color-mix(in srgb,var(--pri) 12%,var(--card))}
-@media(hover:hover){.opt:hover{border-color:var(--pri);background:color-mix(in srgb,var(--pri) 12%,var(--card))}}
+.opt.sel{border-color:var(--pri);background:rgba(120,135,220,.2);background:color-mix(in srgb,var(--pri) 12%,var(--card))}
+@media(hover:hover){.opt:hover{border-color:var(--pri);background:rgba(120,135,220,.2);background:color-mix(in srgb,var(--pri) 12%,var(--card))}}
 .bar{height:8px;background:var(--bd);border-radius:99px;overflow:hidden;margin:10px 0 18px}
 .bar i{display:block;height:100%;background:var(--pri);transition:width .25s}
 .q{font-size:1.2rem;font-weight:600;margin:6px 0 18px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 @media(max-width:560px){.grid{grid-template-columns:1fr}}
-.pf{border-left:5px solid var(--bd);padding:10px 14px;background:color-mix(in srgb,var(--card) 100%,var(--bg));border-radius:10px;border:1px solid var(--bd)}
+.pf{border-left:5px solid var(--bd);padding:10px 14px;background:var(--card);border-radius:10px;border:1px solid var(--bd)}
 .row{display:flex;align-items:center;gap:10px;margin:8px 0}.row b{width:130px;font-size:.92rem}
 .row .tr{flex:1;height:14px;background:var(--bd);border-radius:99px;overflow:hidden}.row .tr i{display:block;height:100%}
 .row span{width:44px;text-align:right;font-variant-numeric:tabular-nums}
@@ -67,6 +70,7 @@ summary{cursor:pointer;font-weight:600}
 </head>
 <body>
 <div class="wrap">
+<div class="nojs" style="display:none;background:#fff3cd;color:#3b2f00;border:2px solid #f2c14e;border-radius:14px;padding:16px;margin-bottom:16px;font-size:1rem;line-height:1.5"><b>Abra no Safari para fazer o teste.</b><br>Esta pré-visualização do iPhone não executa o teste. Toque no ícone de compartilhar (quadrado com seta) e escolha <b>Abrir no Safari</b>.</div>
 <section id="cover" class="cover">
 <div class="brand">EFEITOCAZULO</div>
 <div class="dots"><i style="background:#ff7a6e"></i><i style="background:#f2b544"></i><i style="background:#5ecf92"></i><i style="background:#6fb0f5"></i></div>
@@ -97,7 +101,7 @@ summary{cursor:pointer;font-weight:600}
 <h2>Como responder</h2>
 <ul><li>São 40 perguntas, de dois tipos misturados: afirmações para você dizer o quanto combinam com você, e situações do dia a dia com 4 alternativas.</li><li>Responda pensando em como você realmente é, e não em como gostaria de ser.</li><li>Não há respostas certas ou erradas, e a primeira escolha costuma ser a mais verdadeira.</li><li>Leva cerca de 10 minutos.</li></ul>
 <h2 style="margin-top:20px">Identificação</h2>
-<p class="mut" style="font-size:.92rem">Seu nome acompanha o resultado. Ao final, você poderá salvar o relatório em PDF e enviá-lo para o WhatsApp da EfeitoCazulo.</p>
+<p class="mut" style="font-size:.92rem">Seu nome acompanha o resultado. Ao final, você poderá salvar o relatório completo em PDF e enviá-lo pelo WhatsApp da EfeitoCazulo.</p>
 <label class="fl">Nome completo *<input id="nm" type="text" autocomplete="name" placeholder="Digite seu nome"></label>
 <label class="fl">E-mail ou WhatsApp (opcional)<input id="ct" type="text" placeholder="Para contato"></label>
 <p id="err" class="hide" style="color:var(--E)">Informe seu nome para começar.</p>
@@ -230,13 +234,47 @@ ro:{p:["Parceiro dedicado, fiel e profundamente comprometido","Atento aos detalh
 tr:{p:["Meticuloso, preciso e comprometido com a qualidade","Planeja, organiza e antecipa problemas","Ético, responsável e confiável nas entregas","Concentra-se profundamente em tarefas complexas"],n:["Perfeccionismo que atrasa entregas","Dificuldade em delegar e em aceitar erros alheios","Pessimismo e foco excessivo nos problemas","Tende a trabalhar isolado e a evitar exposição"]}}};
 for(var k in R3)for(var f in R3[k])R[k][f]=R3[k][f];
 function esc(t){return String(t).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
-var WAPP="5571992532213",CUR=null,WAMSG="";
+var CUR=null;
 function prep(top,sec,pc,keys){CUR={top:top,sec:sec,pc:pc,keys:keys};return""}
-function waLink(){var r=R[CUR.top];var t="Olá, EfeitoCazulo! Meu nome é "+who.nome+" e fiz o teste de Identificação e Análise de Perfil Comportamental. Meu perfil predominante é "+r.n+" ("+r.t+"), com "+R[CUR.sec].n+" como perfil secundário. Segue o PDF do meu resultado.";WAMSG=t;return"https://wa.me/"+WAPP+"?text="+encodeURIComponent(t)}
-function copyWa(){var m=$("pdm"),ta=document.createElement("textarea");ta.value=WAMSG;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();var ok=false;try{ok=document.execCommand("copy")}catch(e){}document.body.removeChild(ta);
-m.textContent=ok?"Mensagem copiada! Abra o WhatsApp, procure o número (71) 99253-2213 e cole a mensagem. Depois anexe o PDF.":"Não foi possível copiar. Salve o número (71) 99253-2213 no WhatsApp e escreva seu nome e seu perfil."}
-function endCard(){return'<div class="card noprint" style="border:2px solid var(--pri)"><h2>📄 Salve e envie seu resultado</h2><p>1) Toque em <b>Salvar resultado em PDF</b>.<br>2) Depois toque em <b>Enviar pelo WhatsApp</b> para abrir a conversa com a EfeitoCazulo e anexe o PDF salvo.</p><p><button class="btn pri" onclick="savePdf()">Salvar resultado em PDF</button> <a class="btn" style="display:inline-block;text-decoration:none" href="'+waLink()+'" target="_blank" rel="noopener">Enviar pelo WhatsApp</a> <button class="btn" onclick="copyWa()">Copiar mensagem</button></p><p class="mut" id="pdm" style="font-size:.88rem">Se o botão do WhatsApp não abrir, toque em «Copiar mensagem», salve o número (71) 99253-2213 e cole a mensagem na conversa.</p></div>'}
-function savePdf(){$("pdm").textContent="Na tela que abrir, escolha «Salvar como PDF». No iPhone: toque em Compartilhar e depois em «Salvar em Arquivos». Em seguida, toque em «Enviar pelo WhatsApp» e anexe o arquivo.";window.print()}
+function endCard(){return'<div class="card noprint" style="border:2px solid var(--pri)"><h2>📄 Salve e envie seu resultado</h2><p>Gere o PDF do seu relatório e envie para a EfeitoCazulo pelo WhatsApp. Ao tocar em <b>Enviar PDF pelo WhatsApp</b>, escolha o WhatsApp na lista e selecione o contato (71) 99253-2213.</p><p><button class="btn pri" onclick="sharePdf()">Enviar PDF pelo WhatsApp</button> <button class="btn" onclick="savePdf()">Salvar PDF no aparelho</button></p><p class="mut" id="pdm" style="font-size:.88rem"></p></div>'}
+function mkPdf(items){var PW=595,PH=842,M=50,TW=PW-2*M,pages=[],cur=[],y=PH-M;
+function esc(t){var o="";for(var i=0;i<t.length;i++){var c=t.charCodeAt(i);if(c==40||c==41||c==92)o+="\\"+t.charAt(i);else if(c<32)o+=" ";else if(c<127)o+=t.charAt(i);else if(c<256)o+="\\"+("00"+c.toString(8)).slice(-3);else o+="-"}return o}
+function wrap(t,s,b){var max=Math.floor(TW/(s*(b?0.58:0.54))),w=t.split(" "),L=[],l="";w.forEach(function(x){if((l+" "+x).trim().length>max){if(l)L.push(l);l=x}else l=(l+" "+x).trim()});if(l)L.push(l);return L}
+items.forEach(function(it){var L=wrap(it.t,it.s,it.b),lh=it.s*1.35;y-=(it.gap||0);
+L.forEach(function(l){if(y-lh<M){pages.push(cur);cur=[];y=PH-M}y-=lh;cur.push("BT /"+(it.b?"F2":"F1")+" "+it.s+" Tf "+(it.c||[0.12,0.14,0.19]).join(" ")+" rg "+M+" "+y.toFixed(1)+" Td ("+esc(l)+") Tj ET")});y-=3});
+pages.push(cur);
+var objs=[],kids=pages.map(function(p,i){return(5+2*i)+" 0 R"}).join(" ");
+objs[1]="<< /Type /Catalog /Pages 2 0 R >>";
+objs[2]="<< /Type /Pages /Kids ["+kids+"] /Count "+pages.length+" >>";
+objs[3]="<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>";
+objs[4]="<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>";
+pages.forEach(function(p,i){var st=p.join("\n");objs[5+2*i]="<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents "+(6+2*i)+" 0 R >>";objs[6+2*i]="<< /Length "+st.length+" >>\nstream\n"+st+"\nendstream"});
+var out="%PDF-1.4\n",off=[],i;for(i=1;i<objs.length;i++){off[i]=out.length;out+=i+" 0 obj\n"+objs[i]+"\nendobj\n"}
+var xr=out.length;out+="xref\n0 "+objs.length+"\n0000000000 65535 f \n";for(i=1;i<objs.length;i++)out+=("0000000000"+off[i]).slice(-10)+" 00000 n \n";
+out+="trailer\n<< /Size "+objs.length+" /Root 1 0 R >>\nstartxref\n"+xr+"\n%%EOF";
+var u=new Uint8Array(out.length);for(i=0;i<out.length;i++)u[i]=out.charCodeAt(i)&255;return u}
+function buildItems(){var r=R[CUR.top],c=COMBO[CUR.top+CUR.sec],I=[],AZ=[0.16,0.27,0.55],OU=[0.75,0.55,0.08];
+function t(x,s,b,col,gap){I.push({t:String(x),s:s||10.5,b:b,c:col,gap:gap})}
+function hd(x){t(x,13,true,AZ,10)}
+function ls(a){a.forEach(function(x){t("- "+x)})}
+t("EFEITOCAZULO",16,true,OU);t("Identificação e Análise de Perfil Comportamental",18,true);
+t("Nome: "+who.nome,11,false,null,6);if(who.contato)t("Contato: "+who.contato,11);t("Data: "+new Date().toLocaleDateString("pt-BR"),11);
+hd("Perfil predominante: "+r.n+" ("+r.t+")");t("Palavra-chave: "+r.palavra,11,true);t("Síntese: "+r.sintese);t(r.resumo);
+hd("Afinidade com cada perfil");CUR.keys.forEach(function(k){t("- "+R[k].n+": "+CUR.pc[k]+"%")});
+hd("Análise aprofundada");r.prof.forEach(function(x){t(x)});
+if(c){hd("Sua combinação de perfis: "+c.t);c.p.forEach(function(x){t(x)});t("Onde as energias se complementam",11,true);ls(c.s);t("Onde podem entrar em conflito",11,true);ls(c.c);t("O que desenvolver",11,true);ls(c.d)}
+[["Facilidades","fac"],["Dificuldades","dif"],["O que motiva","mot"],["O que desmotiva","des"],["Como se autoincentivar","inc"],["Medos mais comuns","med"],["Potenciais","pot"]].forEach(function(a){hd(a[0]);ls(r[a[1]])});
+[["Nas relações de amizade","am"],["Nas relações românticas","ro"],["No ambiente de trabalho","tr"]].forEach(function(a){hd(a[0]);t("Tendências positivas",11,true);ls(r[a[1]].p);t("Tendências negativas",11,true);ls(r[a[1]].n)});
+hd("Áreas de trabalho mais indicadas");ls(r.areas);
+t("Ferramenta de autoconhecimento, que não substitui avaliação psicológica profissional. EfeitoCazulo.",9,false,[0.4,0.4,0.43],14);return I}
+function pdfName(){return"perfil-comportamental-"+who.nome.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")+".pdf"}
+function mkFile(){return new File([mkPdf(buildItems())],pdfName(),{type:"application/pdf"})}
+function dlPdf(f){var u=URL.createObjectURL(f),a=document.createElement("a");a.href=u;a.download=f.name;document.body.appendChild(a);a.click();setTimeout(function(){document.body.removeChild(a);URL.revokeObjectURL(u)},2000)}
+function savePdf(){var m=$("pdm");try{dlPdf(mkFile());m.textContent="PDF gerado! Procure o arquivo na pasta Downloads ou Arquivos do seu aparelho."}catch(e){m.textContent="Não foi possível gerar o PDF neste aparelho."}}
+function sharePdf(){var m=$("pdm"),f;try{f=mkFile()}catch(e){m.textContent="Não foi possível gerar o PDF neste aparelho.";return}
+var txt="Olá, EfeitoCazulo! Segue o PDF do meu resultado no teste de Identificação e Análise de Perfil Comportamental. Meu nome: "+who.nome;
+function fb(){dlPdf(f);m.textContent="Seu aparelho não abriu o compartilhamento. O PDF foi baixado: abra o WhatsApp, procure (71) 99253-2213 e anexe o arquivo.";window.open("https://wa.me/5571992532213?text="+encodeURIComponent(txt),"_blank")}
+if(navigator.canShare&&navigator.canShare({files:[f]})){navigator.share({files:[f],title:"Resultado - EfeitoCazulo",text:txt}).then(function(){m.textContent="Compartilhado! Se escolheu o WhatsApp, confirme o envio para (71) 99253-2213."},function(e){if(!e||e.name!="AbortError")fb()})}else fb()}
 var COMBO={
 EC:{t:"Executor com Comunicador: o líder carismático",p:["Você combina a determinação de quem quer resultado com a energia de quem sabe mobilizar pessoas. Costuma liderar pelo entusiasmo e pelo exemplo: tem uma meta na cabeça, convence os outros de que ela vale a pena e puxa o grupo para a ação. É uma combinação típica de quem empreende, vende, apresenta ideias e abre caminhos, pois une coragem para decidir e facilidade para se comunicar.","Nas relações, tende a ser intenso e expressivo: gosta de estar no centro, de viver experiências e de ter ao lado pessoas que acompanhem seu ritmo. O risco é viver acelerado demais, assumir muitos projetos ao mesmo tempo e tratar quem tem outro ritmo como lento. Sob estresse, pode alternar entre a irritação do Executor e a impulsividade do Comunicador, tomando decisões rápidas demais e falando antes de pensar."],
 s:["Visão e influência: você enxerga o objetivo e consegue engajar os outros nele","Coragem e carisma andam juntos, o que abre portas e gera confiança","Energia contagiante para iniciar projetos e vencer resistências"],
